@@ -1,34 +1,37 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
 
 function Home({ login }) {
-  const [comps, setComps] = useState([{
-    _id: '',
-    System: '',
-    Version: '',
-    Device_Name: '',
-    Release_Details: '',
-    Processor: '',
-    System_Detail: '',
-    Model: '',
-    Number_of_Processors: ''
-  }])
+  const [comps, setComps] = useState([
+    {
+      _id: "",
+      System: "",
+      Version: "",
+      Device_Name: "",
+      Release_Details: "",
+      Processor: "",
+      System_Detail: "",
+      Model: "",
+    },
+  ]);
 
   useEffect(() => {
-    fetch("/home").then(res => {
-      if (res.ok) {
-        return res.json()
-      }
-    }).then(jsonRes => setComps(jsonRes));
-  })
+    fetch("/home")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((jsonRes) => setComps(jsonRes));
+  });
 
   return (
     <>
-      {login ? <h1>Not Logged In try Again!</h1>
-        :
+      {login ? (
+        <h1>Not Logged In try Again!</h1>
+      ) : (
         <div className="container">
           <h1>Home</h1>
-          {comps.map(stat =>
+          {comps.map((stat) => (
             <div>
               <table class="table">
                 <thead>
@@ -56,40 +59,20 @@ function Home({ login }) {
                     <td>{stat.Model}</td>
                     <td>{stat.Number_of_Processors}</td>
                   </tr>
-                </tbody></table>
+                </tbody>
+              </table>
             </div>
-          )}
-
+          ))}
         </div>
-      }
-
+      )}
     </>
-  )
+  );
 }
 
 export default Home;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <table class="table">
+{
+  /* <table class="table">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -106,4 +89,5 @@ export default Home;
         </tr>
         <%})%>
       </tbody>
-    </table> */}
+    </table> */
+}
