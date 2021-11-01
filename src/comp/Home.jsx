@@ -11,6 +11,7 @@ function Home({ login }) {
       Processor: "",
       System_Detail: "",
       Model: "",
+      Number_of_Processors: "",
     },
   ]);
 
